@@ -79,7 +79,7 @@ const widget = async (id) => {
 
         <div class="exchange el1">
             <p class="statname">Биржи</p>
-            <div class="exchanges"><img src="${data.Exchange}.png"></div>
+            <div class="exchanges"><img src="https://uuigww.github.io/${data.Exchange}.png"></div>
         </div>
         </div>
     </div>
