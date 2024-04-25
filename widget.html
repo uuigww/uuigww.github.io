@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script type="text/javascript" src="./widget.js"></script>
+  <link rel="stylesheet" href="widget.css">
+
+  <title>widget</title>
+</head>
+
+<body>
+  <div id="widget-container">
+    <div class="head">
+      <img class="preloading logo">
+      <div>
+        <p class="preloading nickname">0000000</p>
+        <div class="preloading market">
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="stats">
+        <div class="roinpnl el1">
+
+          <div class="roi1">
+            <div>
+              <p class="statname">ROI</p>
+              <div class="days">7d</div>
+            </div>
+            <p class="preloading roi value days7">00000</p>
+          </div>
+
+          <div class="pnl">
+            <canvas class="preloading" id="myCanvas" width="120" height="68"></canvas>
+          </div>
+        </div>
+
+        <div class="roi2 el1">
+          <div>
+            <p class="statname">ROI</p>
+            <div class="days">30d</div>
+          </div>
+          <p class="preloading roi value days30">00000</p>
+        </div>
+
+        <div class="aum el1">
+          <p class="statname">AUM</p>
+          <p class="preloading value">00000</p>
+        </div>
+
+        <div class="exchange el1">
+          <p class="statname">Биржи</p>
+          <div class="preloading exchanges"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    widget(4297);
+  </script>
+
+</body>
+
+</html>
