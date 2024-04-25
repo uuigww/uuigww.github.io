@@ -18,7 +18,11 @@ const calculateRoi = (data, days) => {
 };
 
 const widget = async (id) => {
-    await axios.get(`https://service.beznerv0v.com/api/widgets/gettraderstats.ashx?idtrader=${id}`)
+    await axios.get(`https://service.beznerv0v.com/api/widgets/gettraderstats.ashx?idtrader=${id}`, {
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+  }
+})
         .then(response => {
             data = response.data.Data;
             console.log(response.data);
