@@ -17,7 +17,7 @@ const calculateRoi = (data, days) => {
 
 async function getApiData(id) {
     try {
-        const response = await fetch(`http://92.63.96.151:3000/widget?id=${id}`)
+        const response = await fetch(`https://widget.beznerv0v.com/widget?id=${id}`)
 
         const data = await response.json();
 
