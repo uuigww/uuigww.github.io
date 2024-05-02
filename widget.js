@@ -1,5 +1,3 @@
-let data = {};
-
 const preloadWigdetHTML = `
 
 `
@@ -17,27 +15,36 @@ const calculateRoi = (data, days) => {
     return roi;
 };
 
+async function getApiData(id) {
+    try {
+        const response = await fetch(`http://92.63.96.151:3000/widget?id=${id}`)
+
+        const data = await response.json();
+
+        return data.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
 const widget = async (id) => {
-    await axios.get(`https://service.beznerv0v.com/api/widgets/gettraderstats.ashx?idtrader=${id}`)
-        .then(response => {
-            data = response.data.Data;
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.error(error);
-        });
 
-    let market = '';
-    if (data.summaryInformationRatingTraders.profitabilityFuturesUSDT != 0) {
-        market += `<div class="futures"><span>Futures</span></div>`;
-    }
-    if (data.summaryInformationRatingTraders.profitabilitySpot != 0) {
-        market += `<div class="spot"><span>Spot</span></div>`;
-    }
+    try {
+        const data = await getApiData(id);
 
-    //PnL
+        let market = '';
 
-    let widgetHTML = `
+        if (data.summaryInformationRatingTraders.profitabilityFuturesUSDT != 0) {
+            market += `<div class="futures"><span>Futures</span></div>`;
+        }
+        if (data.summaryInformationRatingTraders.profitabilitySpot != 0) {
+            market += `<div class="spot"><span>Spot</span></div>`;
+        }
+
+        //PnL
+
+        let widgetHTML = `
 
     <div class="head">
         <img class="logo" src="${data.Logo}" alt="logo">
@@ -79,7 +86,7 @@ const widget = async (id) => {
 
         <div class="exchange el1">
             <p class="statname">Биржи</p>
-            <div class="exchanges"><img src="https://uuigww.github.io/${data.Exchange}.png"></div>
+            <div class="exchanges"><img src="${data.Exchange}.png"></div>
         </div>
         </div>
     </div>
@@ -94,38 +101,43 @@ const widget = async (id) => {
     </style>
 
     `
-    const dataContainer = document.getElementById('widget-container');
-    dataContainer.innerHTML = widgetHTML;
+        const dataContainer = document.getElementById('widget-container');
+        dataContainer.innerHTML = widgetHTML;
 
-    try {
-        const canvas = document.querySelector("canvas");
-        const ctx = canvas.getContext("2d");
+        try {
+            const canvas = document.querySelector("canvas");
+            const ctx = canvas.getContext("2d");
 
-        ctx.width = 480;
-        ctx.height = 272;
+            ctx.width = 480;
+            ctx.height = 272;
 
-        ctx.imageSmoothingQuality = 'high';
-        ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+            ctx.imageSmoothingEnabled = true;
 
-        const dataChart = data.FuturesUSDT.map((el, index) => {
-            return el.Profit;
-        });
+            const dataChart = data.FuturesUSDT.map((el, index) => {
+                return el.Profit;
+            });
 
-        const min = Math.min(...dataChart);
-        const max = Math.max(...dataChart);
-        const stepX = canvas.width / (dataChart.length - 1);
-        const stepY = canvas.height / (max - min);
+            const min = Math.min(...dataChart);
+            const max = Math.max(...dataChart);
+            const stepX = canvas.width / (dataChart.length - 1);
+            const stepY = canvas.height / (max - min);
 
-        ctx.beginPath();
-        ctx.strokeStyle = (dataChart[dataChart.length - 1] >= dataChart[dataChart.length - 2]) ? "#36A889" : "#EA3943";
-        ctx.lineWidth = 2
+            ctx.beginPath();
+            ctx.strokeStyle = (dataChart[dataChart.length - 1] >= dataChart[dataChart.length - 2]) ? "#36A889" : "#EA3943";
+            ctx.lineWidth = 2
 
-        for (let i = 0; i < dataChart.length; i++) {
-            ctx.lineTo(i * stepX, canvas.height - (dataChart[i] - min) * stepY);
+            for (let i = 0; i < dataChart.length; i++) {
+                ctx.lineTo(i * stepX, canvas.height - (dataChart[i] - min) * stepY);
+            }
+            ctx.stroke();
+        } catch (error) {
+            console.log(error)
         }
-        ctx.stroke();
-    } catch (error) {
-        console.log(error)
+
+
+    } catch (err) {
+        console.log(err)
     }
 }
 
