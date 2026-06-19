@@ -1,67 +1,318 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" class="__variable_94650f __variable_275a17 __variable_e9dd60 h-full antialiased" data-theme="light" style="overflow: hidden auto; height: auto; position: static;;display:block!important;visibility:visible!important;opacity:1!important"><head><link rel="stylesheet" href="/_next/static/css/1707cf67eb18ade8.css?dpl=human20-rf-20260618T174103Z-91cd91d-prod" data-precedence="next"><link rel="stylesheet" href="/_next/static/css/ddc8ae86b25123e5.css?dpl=human20-rf-20260618T174103Z-91cd91d-prod" data-precedence="next"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Человек 2.0 — Среда внедрения ИИ</title><meta name="description" content="Среда внедрения ИИ Человек 2.0: уроки, скилы, встречи и воркшоп Гермес + Кодекс."><meta name="application-name" content="Человек 2.0"><meta name="creator" content="Человек 2.0"><meta name="publisher" content="Человек 2.0"><link rel="canonical" href="https://human20.app"><meta property="og:title" content="Человек 2.0 — Среда внедрения ИИ"><meta property="og:description" content="Среда внедрения ИИ Человек 2.0: уроки, скилы, встречи и воркшоп Гермес + Кодекс."><meta property="og:url" content="https://human20.app"><meta property="og:site_name" content="Человек 2.0"><meta property="og:locale" content="ru_RU"><meta property="og:image" content="https://human20.app/images/workshop-human20-onboarding.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Человек 2.0"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Человек 2.0 — Среда внедрения ИИ"><meta name="twitter:description" content="Среда внедрения ИИ Человек 2.0: уроки, скилы, встречи и воркшоп Гермес + Кодекс."><meta name="twitter:image" content="https://human20.app/images/workshop-human20-onboarding.jpg"><link rel="icon" href="/favicon.ico?8bf7eac43247bb57" type="image/x-icon" sizes="16x16"><link rel="icon" href="/icon.png?d50e0fb5ddc0efdf" type="image/png" sizes="100x100"><link rel="apple-touch-icon" href="/apple-icon.png?eb7b2e1673b157aa" type="image/png" sizes="180x180"><meta name="next-size-adjust" content=""><style data-h20-crosshair="true">
+    html.,
+    html. * {
+      cursor: none !important;
+    }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script type="text/javascript" src="./widget.js"></script>
-  <link rel="stylesheet" href="widget.css">
+    .h20-crosshair-dot,
+    .h20-crosshair-outline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none !important;
+      opacity: 0;
+      will-change: transform, width, height, opacity;
+      contain: layout paint style;
+    }
 
-  <title>widget</title>
-</head>
+    .h20-crosshair-dot {
+      width: 6px;
+      height: 6px;
+      z-index: 10000;
+      border-radius: 999px;
+      background: #1d6bff;
+      box-shadow: 0 0 14px rgba(29, 107, 255, 0.58), 0 0 1px rgba(255, 255, 255, 0.86);
+      transform: translate(-50%, -50%);
+      transition: opacity 140ms ease, transform 80ms linear;
+    }
 
-<body>
-  <div id="widget-container">
-    <div class="head">
-      <img class="preloading logo">
-      <div>
-        <p class="preloading nickname">0000000</p>
-        <div class="preloading market">
-        </div>
-      </div>
-    </div>
-    <div class="wrap">
-      <div class="stats">
-        <div class="roinpnl el1">
+    .h20-crosshair-outline {
+      width: 32px;
+      height: 32px;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: opacity 160ms ease;
+      filter: drop-shadow(0 0 12px rgba(29, 107, 255, 0.28));
+    }
 
-          <div class="roi1">
-            <div>
-              <p class="statname">ROI</p>
-              <div class="days">7d</div>
-            </div>
-            <p class="preloading roi value days7">00000</p>
-          </div>
+    .h20-crosshair-corner {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-color: #1d6bff;
+      transition: width 160ms ease, height 160ms ease, transform 160ms ease, border-color 160ms ease;
+    }
 
-          <div class="pnl">
-            <canvas class="preloading" id="myCanvas" width="120" height="68"></canvas>
-          </div>
-        </div>
+    .h20-crosshair-corner--tl {
+      top: 0;
+      left: 0;
+      border-top: 2px solid #1d6bff;
+      border-left: 2px solid #1d6bff;
+    }
 
-        <div class="roi2 el1">
-          <div>
-            <p class="statname">ROI</p>
-            <div class="days">30d</div>
-          </div>
-          <p class="preloading roi value days30">00000</p>
-        </div>
+    .h20-crosshair-corner--tr {
+      top: 0;
+      right: 0;
+      border-top: 2px solid #1d6bff;
+      border-right: 2px solid #1d6bff;
+    }
 
-        <div class="aum el1">
-          <p class="statname">AUM</p>
-          <p class="preloading value">00000</p>
-        </div>
+    .h20-crosshair-corner--br {
+      right: 0;
+      bottom: 0;
+      border-right: 2px solid #1d6bff;
+      border-bottom: 2px solid #1d6bff;
+    }
 
-        <div class="exchange el1">
-          <p class="statname">Биржи</p>
-          <div class="preloading exchanges"></div>
-        </div>
-      </div>
+    .h20-crosshair-corner--bl {
+      bottom: 0;
+      left: 0;
+      border-bottom: 2px solid #1d6bff;
+      border-left: 2px solid #1d6bff;
+    }
+
+    .h20-crosshair-outline:not(.h20-crosshair-outline--hovering) .h20-crosshair-corner {
+      width: 8px;
+      height: 8px;
+      transform: scale(0.82);
+    }
+
+    ..h20-crosshair-visible .h20-crosshair-dot,
+    ..h20-crosshair-visible .h20-crosshair-outline {
+      opacity: 1;
+    }
+  </style><style id="h20-css">/* Наши баннеры, заскоуплены под .h20banner — не конфликтуют с Tailwind сайта.
+   Размеры подогнаны под колонки сайта (основная ~548px, правый рейл ~300px),
+   т.к. медиазапросы по viewport тут не сработают (viewport широкий). */
+.h20banner{
+  --blue:#2c44f5; --blue-soft:#eef2ff; --blue-glow:#6c84ff;
+  --dark:#111827; --gold:#c4a148; --line:#dfe4ec;
+  box-sizing:border-box;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.h20banner *{box-sizing:border-box;}
+.h20banner a{color:inherit;text-decoration:none;}
+
+/* ============ WORKSHOP (основная колонка) ============ */
+.h20banner.workshop-banner{
+  position:relative; overflow:hidden;
+  display:grid; grid-template-columns:minmax(0,1fr) 172px;
+  align-items:center; gap:14px;
+  min-height:222px; padding:24px; border-radius:18px;
+  background:
+    radial-gradient(circle at 76% 22%, rgb(44 68 245 / 32%), transparent 40%),
+    radial-gradient(circle at 96% 92%, rgb(196 161 72 / 13%), transparent 30%),
+    linear-gradient(135deg,#101827 0%,#0c1220 56%,#151d32 100%);
+  box-shadow:0 18px 40px rgb(15 23 42 / 22%);
+}
+.h20banner .workshop-copy{position:relative; z-index:2;}
+.h20banner .kicker{
+  display:inline-flex; align-items:center; min-height:24px;
+  padding:4px 9px; border-radius:8px;
+  background:rgb(44 68 245 / 18%); color:var(--blue-glow);
+  font-size:11px; font-weight:900; letter-spacing:.08em; text-transform:uppercase;
+}
+.h20banner.workshop-banner h1{
+  margin:14px 0 8px; color:#fff;
+  font-size:30px; line-height:1.06; letter-spacing:-.03em;
+}
+.h20banner.workshop-banner p{
+  margin:0; color:#dbe3f0; font-size:15px; line-height:1.4; max-width:330px;
+}
+.h20banner .mascot-wrap{position:relative; z-index:1; height:100%; min-height:172px;}
+.h20banner .mascot-wrap img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:contain; object-position:center right;
+  filter:drop-shadow(0 12px 24px rgb(44 68 245 / 26%));
+}
+
+/* ============ SOCIAL — общий ============ */
+.h20banner.social-banner{
+  position:relative; overflow:hidden;
+  border:1px solid var(--line);
+  background:radial-gradient(circle at 88% 8%, rgb(108 132 255 / 18%), transparent 32%), #fff;
+  box-shadow:0 14px 36px rgb(15 23 42 / 8%);
+  border-radius:18px;
+}
+.h20banner.social-banner h2{margin:0 0 12px; color:#111827; line-height:1.05; letter-spacing:-.03em;}
+.h20banner.social-banner p{margin:0; color:#4b5563; line-height:1.5;}
+
+/* ============ кнопки ============ */
+.h20banner .actions{display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin-top:18px;}
+.h20banner .btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:44px; padding:11px 16px; border-radius:12px;
+  font-size:14px; font-weight:900; white-space:nowrap;
+}
+.h20banner .btn-ico{width:17px; height:17px; flex:none;}
+.h20banner .btn-primary{background:var(--blue); color:#fff; box-shadow:0 12px 24px rgb(44 68 245 / 26%);}
+.h20banner .btn-light{background:#fff; color:#111827;}
+.h20banner .btn-gold{border:1px solid var(--gold); background:rgb(196 161 72 / 12%); color:#fff;}
+.h20banner .btn-outline{border:1px solid #cfd7ea; background:#fff; color:var(--blue);}
+
+/* ============ телефон / орбита ============ */
+.h20banner .phone-wrap{position:static;}
+.h20banner .orbit-back{z-index:0;} .h20banner .orbit-front{z-index:2;}
+
+/* ============ SOCIAL — вертикальный вариант под рейл ============ */
+.h20banner.social-banner.h20-stack{
+  display:block; min-height:auto; padding:20px 20px 196px;
+}
+.h20banner.social-banner.h20-stack h2{font-size:26px;}
+.h20banner.social-banner.h20-stack p{font-size:14px;}
+.h20banner.social-banner.h20-stack .actions{flex-direction:column; align-items:stretch; gap:9px; margin-top:18px;}
+.h20banner.social-banner.h20-stack .btn{width:100%;}
+.h20banner.social-banner.h20-stack .phone-wrap{
+  position:absolute; left:0; right:0; bottom:0; height:188px; pointer-events:none;
+}
+.h20banner.social-banner.h20-stack .phone-wrap .orbit-svg{display:none;}
+.h20banner.social-banner.h20-stack .phone-wrap img{
+  position:absolute; left:50%; bottom:0; transform:translateX(-50%);
+  height:184px; width:auto; object-fit:contain; object-position:center bottom;
+  filter:drop-shadow(0 16px 26px rgb(15 23 42 / 18%));
+}
+
+/* десктопный инстанс social (в рейле) прячем на узких экранах,
+   чтобы не дублировался с мобильным инстансом сайта */
+@media (max-width:1023px){
+  .h20banner.h20-deskonly{display:none !important;}
+}
+
+/* ============ узкий экран: workshop в одну колонку, маскот снизу ============ */
+@media (max-width:760px){
+  .h20banner.workshop-banner{
+    display:block; padding:22px 22px 168px;
+  }
+  .h20banner.workshop-banner h1{font-size:27px;}
+  .h20banner.workshop-banner p{max-width:none;}
+  .h20banner .actions{flex-direction:column; align-items:stretch;}
+  .h20banner .btn{width:100%;}
+  .h20banner .mascot-wrap{
+    position:absolute; left:0; right:0; bottom:0; height:158px; min-height:0;
+  }
+  .h20banner .mascot-wrap img{object-position:center bottom;}
+}
+html{display:block!important;visibility:visible!important;opacity:1!important}html,body{height:auto!important;min-height:100vh!important;overflow:visible!important}.overflow-y-auto,.overflow-auto,.overflow-hidden{overflow:visible!important}.h-screen,.min-h-screen{min-height:100vh!important;height:auto!important}[class*="overflow-y-auto"]{height:auto!important;max-height:none!important}html *{cursor:auto!important}a,button,[role="button"],summary,select,label{cursor:pointer!important}[class*="crosshair"]{display:none!important}.h20banner.workshop-banner{min-height:0;padding:20px 24px}.h20banner.workshop-banner h1{margin:10px 0 6px;font-size:27px}.h20banner.workshop-banner p{margin-bottom:0}.h20banner.workshop-banner .actions{flex-wrap:nowrap;gap:8px;margin-top:14px}.h20banner.workshop-banner .btn{min-height:40px;padding:9px 14px;font-size:13px}.h20banner .kicker{background:var(--gold);color:#16110a;animation:h20pulse 2.2s ease-out infinite}@keyframes h20pulse{0%{box-shadow:0 0 0 0 rgba(196,161,72,.5)}70%{box-shadow:0 0 0 10px rgba(196,161,72,0)}100%{box-shadow:0 0 0 0 rgba(196,161,72,0)}}</style><style id="h20-social-css">
+/* десктоп: поднять «Подписаться» наверх правого рейла */
+@media(min-width:1024px){
+  .space-y-4:has(> .h20-social){display:flex;flex-direction:column;gap:14px}
+  .space-y-4:has(> .h20-social) > *{margin-top:0!important}
+}
+/* мобайл: поднять наверх в одноколоночном стеке */
+@media(max-width:1023px){
+  .space-y-3:has(> .h20-social){display:flex;flex-direction:column;gap:12px}
+  .space-y-3:has(> .h20-social) > *{margin-top:0!important}
+}
+.h20-social{order:-1;position:relative}
+/* мягкое лёгкое свечение на фон (не обрезается — box-shadow рисуется снаружи) */
+.h20-social{box-shadow:0 20px 55px -18px rgba(99,102,241,.34),0 0 46px rgba(99,102,241,.10),0 2px 10px rgba(16,24,40,.05)!important}
+</style><style id="hc-banner-css">.workshop-banner[data-hc="community"] .hc-emoji{display:none}@media(min-width:641px) and (max-width:1023px){.workshop-banner[data-hc="community"] .hc-phone{width:168px!important;right:24px!important}}@media(min-width:641px) and (max-width:760px){.workshop-banner[data-hc="community"]{display:grid!important}.workshop-banner[data-hc="community"] .actions{flex-direction:row!important;align-items:center!important}.workshop-banner[data-hc="community"] .btn{width:auto!important}}@media(max-width:640px){.workshop-banner[data-hc="community"]{grid-template-columns:1fr!important}.workshop-banner[data-hc="community"] .mascot-wrap,.workshop-banner[data-hc="community"] .hc-phone{display:none!important}.workshop-banner[data-hc="community"] .hc-emoji{display:block!important}}</style></head><body class="min-h-full flex flex-col" style="overflow: hidden auto; overscroll-behavior-y: auto; height: auto; position: static; touch-action: auto;"><div hidden=""></div><div class="w-full min-h-screen" style="background: var(--el-color-bg-canvas);"><header class="v1-top-header sticky top-0 z-40 border-b border-border" style="background: var(--el-color-bg-surface);"><div class="mx-auto flex max-w-6xl items-center h-14 px-4 lg:px-6"><a aria-label="Человек 2.0" class="flex items-center shrink-0" href="/"><span class="site-logo relative inline-flex shrink-0 overflow-hidden h-8 w-32 sm:h-9 sm:w-36 md:h-10 md:w-40"><img alt="" aria-hidden="true" data-theme-logo="light" loading="lazy" decoding="async" data-nimg="fill" class="site-logo-image site-logo-image-light absolute inset-0 h-full w-full object-contain" src="/brand/logos/h20-lockup-dark.svg?v=20260420p&amp;dpl=human20-rf-20260618T174103Z-91cd91d-prod" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"><img alt="" aria-hidden="true" data-theme-logo="dark" loading="lazy" decoding="async" data-nimg="fill" class="site-logo-image site-logo-image-dark absolute inset-0 h-full w-full object-contain" src="/brand/logos/h20-lockup-light.svg?v=20260420p&amp;dpl=human20-rf-20260618T174103Z-91cd91d-prod" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"></span></a><div class="ml-auto flex items-center gap-2"><div class="hidden lg:flex items-center"><button type="button" aria-label="Переключить тему" class="h20-round h-10 w-10 aspect-square flex shrink-0 items-center justify-center overflow-hidden rounded-full border bg-white relative transition-colors cursor-pointer hover:bg-cream" style="color: var(--el-color-text-tertiary); border-radius: 9999px; border-color: rgb(233, 226, 215); box-shadow: rgba(38, 29, 20, 0.1) 0px 8px 20px, rgba(255, 255, 255, 0.95) 0px 1px 0px inset;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M232.67 142.26A8 8 0 0 0 224 140a84 84 0 0 1-108-108 8 8 0 0 0-10.29-10.29A100 100 0 1 0 234.26 150a8 8 0 0 0-1.59-7.74Z"></path></svg></button></div><div class="flex items-center"><div class="relative"><button type="button" aria-label="Уведомления" class="h20-round w-9 h-9 flex items-center justify-center rounded-full border border-border bg-white shadow-sm relative"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M220.07,176.94C214.41,167.2,206,139.73,206,104a78,78,0,1,0-156,0c0,35.74-8.42,63.2-14.08,72.94A14,14,0,0,0,48,198H90.48a38,38,0,0,0,75,0H208a14,14,0,0,0,12.06-21.06ZM128,218a26,26,0,0,1-25.29-20h50.58A26,26,0,0,1,128,218Zm81.71-33a1.9,1.9,0,0,1-1.7,1H48a1.9,1.9,0,0,1-1.7-1,2,2,0,0,1,0-2C53.87,170,62,139.69,62,104a66,66,0,1,1,132,0c0,35.68,8.14,65.95,15.71,79A2,2,0,0,1,209.71,185Z"></path></svg><span class="h20-round absolute -top-1 -right-1 min-w-4 h-4 rounded-full bg-red-500 px-1 text-[10px] leading-4 text-white text-center">2</span></button></div></div><a href="/profile"><span class="w-9 h-9 h20-primary-cta h20-round relative flex shrink-0 items-center justify-center overflow-hidden rounded-full text-xs font-semibold text-white" style="background: var(--el-color-accent);"><span class="opacity-100">Р</span></span></a></div></div></header><nav class="v1-mobile-nav fixed bottom-0 left-0 right-0 z-50 border-t border-border lg:hidden" style="background: var(--el-color-bg-surface); padding-bottom: env(safe-area-inset-bottom, 8px);"><div class="mx-auto flex max-w-[480px] items-center justify-around px-2 pt-2 pb-1"><a href="/" class="v1-mobile-nav-item flex flex-col items-center gap-0.5 rounded-2xl px-3 py-1.5 transition-colors v1-mobile-nav-item-active" aria-current="page" style="color: var(--el-color-text-primary);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9,22 9,12 15,12 15,22"></polyline></svg><span style="font-size: 10px; font-weight: 500; line-height: 1.2;">Главная</span></a><a href="/about" class="v1-mobile-nav-item flex flex-col items-center gap-0.5 rounded-2xl px-3 py-1.5 transition-colors " style="color: var(--el-color-text-tertiary);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg><span style="font-size: 10px; font-weight: 500; line-height: 1.2;">О Среде</span></a><a href="/favorites" class="v1-mobile-nav-item flex flex-col items-center gap-0.5 rounded-2xl px-3 py-1.5 transition-colors " style="color: var(--el-color-text-tertiary);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg><span style="font-size: 10px; font-weight: 500; line-height: 1.2;">Избранное</span></a><a href="/profile" class="v1-mobile-nav-item flex flex-col items-center gap-0.5 rounded-2xl px-3 py-1.5 transition-colors " style="color: var(--el-color-text-tertiary);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span style="font-size: 10px; font-weight: 500; line-height: 1.2;">Профиль</span></a><button type="button" aria-label="Переключить тему" class="flex flex-col items-center gap-0.5 rounded-2xl px-3 py-1.5 transition-colors" style="color: var(--el-color-text-tertiary);"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M232.67 142.26A8 8 0 0 0 224 140a84 84 0 0 1-108-108 8 8 0 0 0-10.29-10.29A100 100 0 1 0 234.26 150a8 8 0 0 0-1.59-7.74Z"></path></svg><span style="font-size: 10px; font-weight: 500; line-height: 1.2;">Тема</span></button></div></nav><div class="w-full overflow-x-hidden overflow-y-auto" style="height: calc(100dvh - var(--el-header-height)); overscroll-behavior-y: auto;"><div class="mx-auto max-w-6xl lg:flex lg:gap-6 lg:px-6 lg:pt-6"><aside class="hidden lg:flex flex-col gap-1 w-52 shrink-0 pt-2 relative z-10 pointer-events-auto"><div><a href="/" class="flex items-center gap-3 px-3 py-2 rounded-xl transition-colors relative z-10" aria-current="page" style="background: var(--el-color-accent-soft); color: var(--el-color-accent); font-weight: 600;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9,22 9,12 15,12 15,22"></polyline></svg><span class="text-sm">Главная</span></a></div><div><a href="/about" class="flex items-center gap-3 px-3 py-2 rounded-xl transition-colors relative z-10" style="background: transparent; color: var(--el-color-text-secondary); font-weight: 400;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg><span class="text-sm">О Среде</span></a><a href="/reviews" class="ml-10 mt-0.5 flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs transition-colors" style="background: transparent; color: var(--el-color-text-tertiary); font-weight: 500;"><span aria-hidden="true" class="h-1.5 w-1.5 rounded-full" style="background: currentcolor;"></span><span>Отзывы</span></a></div><div><a href="/favorites" class="flex items-center gap-3 px-3 py-2 rounded-xl transition-colors relative z-10" style="background: transparent; color: var(--el-color-text-secondary); font-weight: 400;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg><span class="text-sm">Избранное</span></a></div><div><a href="/profile" class="flex items-center gap-3 px-3 py-2 rounded-xl transition-colors relative z-10" style="background: transparent; color: var(--el-color-text-secondary); font-weight: 400;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span class="text-sm">Профиль</span></a></div><div class="mx-3 my-2 h-px" style="background: var(--el-color-border-soft);"></div><a class="flex items-center gap-3 rounded-xl px-3 py-2 transition-colors" href="/lessons" style="color: var(--el-color-text-secondary); background: transparent; font-weight: 400;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg><span class="text-sm">Уроки</span></a><a class="flex items-center gap-3 rounded-xl px-3 py-2 transition-colors" href="/skills" style="color: var(--el-color-text-secondary); background: transparent; font-weight: 400;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg><span class="text-sm">Скилы</span></a><a class="flex items-center gap-3 rounded-xl px-3 py-2 transition-colors" href="/meetings" style="color: var(--el-color-text-secondary); background: transparent; font-weight: 400;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v1H6a3 3 0 0 0-3 3v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a3 3 0 0 0-3-3h-3V5a3 3 0 0 0-3-3z"></path><circle cx="12" cy="13" r="2"></circle></svg><span class="text-sm">Встречи</span></a><a class="flex items-center gap-3 rounded-xl px-3 py-2 transition-colors" href="/projects" style="color: var(--el-color-text-secondary); background: transparent; font-weight: 400;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg><span class="text-sm">Проекты</span></a><a class="flex items-center gap-3 rounded-xl px-3 py-2 transition-colors" href="/pulse" style="color: var(--el-color-text-secondary); background: transparent; font-weight: 400;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg><span class="text-sm">Пульс</span></a><a class="flex items-center gap-3 rounded-xl px-3 py-2 transition-colors" href="/articles" style="color: var(--el-color-text-secondary); background: transparent; font-weight: 400;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-1.5z"></path><path d="M8 7h6"></path><path d="M8 11h6"></path><path d="M8 15h4"></path></svg><span class="text-sm">Статьи</span></a><a class="flex items-center gap-3 rounded-xl px-3 py-2 transition-colors" href="/faq" style="color: var(--el-color-text-secondary); background: transparent; font-weight: 400;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg><span class="text-sm">Вопросы</span></a><div class="relative"><a class="group relative flex items-center gap-3 rounded-xl px-3 py-2 transition-colors" href="/community" style="color: var(--el-color-text-secondary); background: transparent; font-weight: 400;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"></path></svg><span class="text-sm">ТГ Канал + Чат</span></a></div><a class="flex items-center gap-3 rounded-xl px-3 py-2 transition-colors" href="/agent" style="color: var(--el-color-text-secondary); background: transparent; font-weight: 400;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path><path d="M7 8l2 2-2 2M11 12h4"></path></svg><span class="text-sm">API / MCP</span></a></aside><main class="flex-1 min-w-0"><div class="pt-4 lg:pt-0"></div><div class="px-4 lg:px-0 space-y-4"><div class="lg:grid lg:grid-cols-[1fr_300px] lg:gap-6 lg:items-start space-y-4 lg:space-y-0"><div class="space-y-4"><section class="h20banner workshop-banner" data-hc="community" style="grid-template-columns:minmax(0,1fr) 200px" aria-label="Чат среды внедрения ИИ">
+  <div class="workshop-copy">
+    <div class="kicker">Сообщество</div>
+    <h1>Чат среды<br>внедрения ИИ</h1>
+    <p>Следите, как мы внедряем ИИ-агентов: кейсы, промпты, разборы и живая помощь</p>
+    <div class="actions">
+      <a class="btn btn-light" href="https://human20.app/community">Присоединиться</a>
     </div>
   </div>
-  <script type="text/javascript">
-    widget(4297);
-  </script>
-
-</body>
-
-</html>
+  <div class="mascot-wrap" aria-hidden="true"></div>
+  <img class="hc-phone" src="/assets/community-phone.png" alt="" aria-hidden="true" style="position:absolute;right:30px;bottom:0;width:200px;max-width:none;display:block;border-radius:6px;filter:drop-shadow(0 16px 34px rgba(0,0,0,.5))">
+  <img class="hc-emoji" src="/assets/chat-icon.svg" alt="" aria-hidden="true" style="position:absolute;top:-18px;right:-16px;width:140px;height:140px;transform:rotate(14deg)">
+</section>
+<section class="grid gap-2 rounded-[6px] border border-border bg-[var(--el-color-bg-surface)] p-3 shadow-card md:grid-cols-3" style="display:none"><div class="rounded-[6px] bg-[var(--el-color-bg-surface-muted)] px-3 py-2.5"><div class="font-mono text-[10px] font-black uppercase tracking-[0.18em] text-[var(--el-color-accent)]">Маршрут</div><p class="mt-1 text-[12px] leading-5 text-[var(--el-color-text-secondary)]">Сначала запись на воркшоп. Дальше — уроки, скилы, встречи и чат без рекламной развилки на первом экране.</p></div><div class="rounded-[6px] bg-[var(--el-color-bg-surface-muted)] px-3 py-2.5"><div class="font-mono text-[10px] font-black uppercase tracking-[0.18em] text-[var(--el-color-accent)]">Бот</div><p class="mt-1 text-[12px] leading-5 text-[var(--el-color-text-secondary)]">Бот воркшопа помогает участникам воркшопа со сложными вопросами по ходу обучения.</p></div><div class="rounded-[6px] bg-[var(--el-color-bg-surface-muted)] px-3 py-2.5"><div class="font-mono text-[10px] font-black uppercase tracking-[0.18em] text-[var(--el-color-accent)]">Готовый агент</div><p class="mt-1 text-[12px] leading-5 text-[var(--el-color-text-secondary)]">Если не хотите собирать сами, отдельный путь остаётся кнопкой в баннере — без дубля карточек под ним.</p></div></section><div class="lg:hidden"><section><div class="flex justify-between items-end mb-3 gap-4"><div><h2 class="text-base font-semibold flex items-center gap-1.5" style="color: var(--el-color-text-primary);"><span class="text-base leading-none">❓</span>Вопросы</h2><p class="mt-0.5 text-xs leading-relaxed" style="color: var(--el-color-text-secondary);">Короткие ответы на частые вопросы по урокам, скилам, встречам и проектам.</p></div><a class="text-xs font-medium shrink-0" href="/faq" style="color: var(--el-color-text-tertiary);">Все →</a></div><div class="rounded-2xl border border-border shadow-card overflow-hidden space-y-0" style="background: var(--el-color-bg-surface);"><div class="p-4 space-y-2"><details class="rounded-2xl border border-border bg-cream/80 p-4"><summary class="cursor-pointer list-none text-sm font-medium text-charcoal">Будут ли записи уроков и встреч, если я не попал в онлайн?</summary><div class="mt-3 text-sm leading-relaxed text-charcoal-light">Воркшоп не завязан на том, что ты обязан сидеть на каждом созвоне в онлайне. Нормальный сценарий такой: посмотреть встречу вживую, если успеваешь, а если нет — вернуться к записи и пройти материал в своём темпе. Для практики запись даже удобнее: можно поставить на паузу, пересмотреть сложный момент и сразу повторить руками. Поэтому здесь важнее не паниковать из-за пропущенного слота, а быстро понять, где лежит нужная встреча и какой следующий шаг после неё.</div><div class="mt-3 flex flex-wrap items-center gap-2"><span class="rounded-full border border-border bg-white px-3 py-1 text-[11px] text-charcoal-light">Уроки</span><span class="rounded-full border border-border bg-white px-3 py-1 text-[11px] text-charcoal-light">meetings</span><a class="inline-flex items-center gap-1 rounded-full border border-border bg-white px-3 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted transition-colors hover:bg-cream" target="_blank" rel="noreferrer" href="https://t.me/c/3598068116/810">Открыть в чате</a><a class="inline-flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted" href="/content/lesson-onboarding">Открыть материал<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true" class="text-current"><path d="M181.66,133l-80,80a8,8,0,0,1-11.32-11.31L164.69,128,90.34,53.66A8,8,0,0,1,101.66,42.34l80,80A8,8,0,0,1,181.66,133Z"></path></svg></a></div></details><details class="rounded-2xl border border-border bg-cream/80 p-4"><summary class="cursor-pointer list-none text-sm font-medium text-charcoal">Что сейчас использовать: Claude, GPT, Kimi или Minimax?</summary><div class="mt-3 text-sm leading-relaxed text-charcoal-light">Если Minimax у тебя уже куплен под Cursor, это ещё не значит, что его надо тащить во все остальные сценарии. В воркшопе логика простая: сначала разделяешь роли. Один контур может быть удобен для кодинга, другой — для ресёрча или Telegram-задач. Поэтому вопрос не в том, нужна ли «ещё одна подписка вообще», а в том, какую работу должен делать OpenClaw и где текущая модель реально начинает сыпаться по качеству, лимитам или цене. Сначала зафиксируй один рабочий сценарий, потом уже решай, нужен ли второй провайдер имен…</div><div class="mt-3 flex flex-wrap items-center gap-2"><span class="rounded-full border border-border bg-white px-3 py-1 text-[11px] text-charcoal-light">Уроки</span><span class="rounded-full border border-border bg-white px-3 py-1 text-[11px] text-charcoal-light">Модели</span><a class="inline-flex items-center gap-1 rounded-full border border-border bg-white px-3 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted transition-colors hover:bg-cream" target="_blank" rel="noreferrer" href="https://t.me/c/3598068116/677">Открыть в чате</a><a class="inline-flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted" href="/content/lesson-3">Открыть материал<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true" class="text-current"><path d="M181.66,133l-80,80a8,8,0,0,1-11.32-11.31L164.69,128,90.34,53.66A8,8,0,0,1,101.66,42.34l80,80A8,8,0,0,1,181.66,133Z"></path></svg></a></div></details><details class="rounded-2xl border border-border bg-cream/80 p-4"><summary class="cursor-pointer list-none text-sm font-medium text-charcoal">Как сейчас реально оплачивать Cursor, Claude, Perplexity и VPS?</summary><div class="mt-3 text-sm leading-relaxed text-charcoal-light">С оплатами лучше сразу смотреть на весь маршрут, а не только на сам сервис. Обычно ломается одна из четырёх вещей: карта, KYC, гео или антифрод провайдера. Поэтому практический порядок такой: сначала находишь рабочий платёжный контур, которым у тебя реально проходят Cursor, Claude, Perplexity или VPS, и только потом строишь вокруг него постоянный сетап. Если какая-то карта уже стопорится на одном сервисе, это не значит, что сломан весь воркшоп. Значит, надо сменить маршрут оплаты, а не бесконечно биться в ту же то…</div><div class="mt-3 flex flex-wrap items-center gap-2"><span class="rounded-full border border-border bg-white px-3 py-1 text-[11px] text-charcoal-light">Уроки</span><span class="rounded-full border border-border bg-white px-3 py-1 text-[11px] text-charcoal-light">Оплаты</span><a class="inline-flex items-center gap-1 rounded-full border border-border bg-white px-3 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted transition-colors hover:bg-cream" target="_blank" rel="noreferrer" href="https://t.me/c/3598068116/2123">Открыть в чате</a><a class="inline-flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted" href="/content/lesson-onboarding">Открыть материал<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true" class="text-current"><path d="M181.66,133l-80,80a8,8,0,0,1-11.32-11.31L164.69,128,90.34,53.66A8,8,0,0,1,101.66,42.34l80,80A8,8,0,0,1,181.66,133Z"></path></svg></a></div></details></div></div></section></div><section class="rounded-[6px] p-5 border border-border" style="background: var(--el-color-bg-surface);"><div class="text-[11px] font-semibold uppercase tracking-widest mb-2" style="color: var(--el-color-accent);">Воркшоп 2.0</div><div class="text-base font-semibold leading-snug" style="color: var(--el-color-text-primary);">Уроки открываются отдельным доступом</div><p class="mt-3 text-sm leading-relaxed" style="color: var(--el-color-text-secondary);">Среда открывает community-контент: чат, Пульс, встречи, скилы и API/MCP. Уроки воркшопа живут в отдельном Workshop Access.</p><div class="mt-4 flex gap-2"><a class="flex-1 text-center text-sm font-semibold py-2.5 rounded-[6px]" href="/lessons" style="background: var(--el-color-accent); color: rgb(255, 255, 255); -webkit-text-fill-color: rgb(255, 255, 255);">Открыть уроки →</a><a class="shrink-0 text-sm font-medium px-4 py-2.5 rounded-[6px] border border-border" href="/community" style="color: var(--el-color-text-primary); background: var(--el-color-bg-canvas);">Среда</a></div></section><div class="lg:hidden space-y-3"><div><div class="text-[10px] uppercase tracking-[0.18em] mb-2" style="color: var(--el-color-text-tertiary);">Быстрый доступ</div><div class="grid grid-cols-3 gap-2"><a class="flex flex-col items-center gap-1.5 rounded-2xl border border-border p-2.5 transition-colors active:opacity-70" href="/skills" style="background: var(--el-color-bg-surface);"><span class="text-2xl leading-none">⚡</span><span class="text-[11px] font-semibold text-center leading-tight" style="color: var(--el-color-text-primary);">Скилы</span><span class="text-[10px] px-1.5 py-0.5 rounded-full font-medium" style="background: rgba(245, 158, 11, 0.1); color: rgb(245, 158, 11);">Связки</span></a><a class="flex flex-col items-center gap-1.5 rounded-2xl border border-border p-2.5 transition-colors active:opacity-70" href="/meetings" style="background: var(--el-color-bg-surface);"><span class="text-2xl leading-none">🎙️</span><span class="text-[11px] font-semibold text-center leading-tight" style="color: var(--el-color-text-primary);">Встречи</span><span class="text-[10px] px-1.5 py-0.5 rounded-full font-medium" style="background: rgba(16, 185, 129, 0.1); color: rgb(16, 185, 129);">Разборы</span></a><a class="flex flex-col items-center gap-1.5 rounded-2xl border border-border p-2.5 transition-colors active:opacity-70" href="/community" style="background: var(--el-color-bg-surface);"><span class="text-2xl leading-none">💬</span><span class="text-[11px] font-semibold text-center leading-tight" style="color: var(--el-color-text-primary);">Чат</span><span class="text-[10px] px-1.5 py-0.5 rounded-full font-medium" style="background: rgba(99, 102, 241, 0.1); color: rgb(99, 102, 241);">Живой</span></a></div></div><section class="lg:hidden overflow-hidden rounded-[22px] border border-[var(--el-color-border-default)] bg-[var(--el-color-bg-surface)] p-3 shadow-card"><div class="flex items-start gap-3"><div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-[var(--el-color-accent-soft)] text-xl">💬</div><div class="min-w-0 flex-1"><div class="flex items-start justify-between gap-3"><div><p class="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--el-color-accent)]">не пропусти чат</p><h2 class="mt-1 text-sm font-black leading-snug text-[var(--el-color-text-primary)]">Канал + Чат — живое место Среды</h2></div><button type="button" aria-label="Закрыть подсказку про канал и чат" class="-mr-1 -mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--el-color-bg-canvas)] text-lg font-bold text-[var(--el-color-text-tertiary)]">×</button></div><p class="mt-1 text-xs leading-5 text-[var(--el-color-text-secondary)]">Вопросы, сетапы, разборы и помощь рядом.</p><a class="h20-primary-cta mt-2 inline-flex min-h-9 w-full items-center justify-center rounded-[14px] bg-[var(--el-color-accent)] h20-primary-cta px-3 py-2 text-xs font-black text-white shadow-[0_10px_20px_rgba(99,102,241,0.18)]" href="/community">Открыть канал и чат</a></div></div></section><section class="rounded-[6px] border border-border bg-[var(--el-color-bg-surface)] p-4 shadow-card h20-social "><div class="text-[10px] font-semibold uppercase tracking-[0.2em]" style="color: var(--el-color-accent);">Площадки</div><h2 class="mt-1 text-base font-semibold leading-tight" style="color: var(--el-color-text-primary);">Подписаться</h2><p class="mt-2 text-xs leading-5" style="color: var(--el-color-text-secondary);">Telegram и ВКонтакте — основные каналы. Все площадки Человек 2.0 — на отдельной странице.</p><div class="h20banner" style="--blue:#6366f1"><div class="actions" style="margin-top:14px;flex-wrap:nowrap;gap:8px"><a class="btn btn-primary" style="flex:1;min-width:0" href="https://t.me/human20">
+        <svg class="btn-ico" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M477,43.86,13.32,223.29a5.86,5.86,0,0,0-.8.38c-3.76,2.13-30,18.18,7,32.57l.38.14,110.41,35.67a6.08,6.08,0,0,0,5.09-.62L409.25,120.57a6,6,0,0,1,2.2-.83c3.81-.63,14.78-1.81,7.84,7-7.85,10-194.9,177.62-215.66,196.21a6.3,6.3,0,0,0-2.07,4.17l-9.06,108a7.08,7.08,0,0,0,2.83,5.67,6.88,6.88,0,0,0,8.17-.62l65.6-58.63a6.09,6.09,0,0,1,7.63-.39l114.45,83.1.37.25c2.77,1.71,32.69,19.12,41.33-19.76l79-375.65c.11-1.19,1.18-14.27-8.17-22-9.82-8.08-23.72-4-25.81-3.56A6,6,0,0,0,477,43.86Z"/></svg>
+        Телеграм
+      </a><a class="btn btn-outline" style="flex:1;min-width:0" href="https://vk.com/human20">
+        <svg class="btn-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m19.915 13.028c-.388-.49-.277-.708 0-1.146.005-.005 3.208-4.431 3.538-5.932l.002-.001c.164-.547 0-.949-.793-.949h-2.624c-.668 0-.976.345-1.141.731 0 0-1.336 3.198-3.226 5.271-.61.599-.892.791-1.225.791-.164 0-.419-.192-.419-.739v-5.105c0-.656-.187-.949-.74-.949h-4.126c-.419 0-.668.306-.668.591 0 .622.945.765 1.043 2.515v3.797c0 .832-.151.985-.486.985-.892 0-3.057-3.211-4.34-6.886-.259-.713-.512-1.001-1.185-1.001h-2.625c-.749 0-.9.345-.9.731 0 .682.892 4.073 4.148 8.553 2.17 3.058 5.226 4.715 8.006 4.715 1.671 0 1.875-.368 1.875-1.001 0-2.922-.151-3.198.686-3.198.388 0 1.056.192 2.616 1.667 1.783 1.749 2.076 2.532 3.074 2.532h2.624c.748 0 1.127-.368.909-1.094-.499-1.527-3.871-4.668-4.023-4.878z"/></svg>
+        ВКонтакте
+      </a></div><a href="/socials/" style="display:inline-flex;align-items:center;gap:5px;margin-top:12px;color:#6366f1;font-weight:800;font-size:14px;text-decoration:none">Все соцсети <span aria-hidden="true">&#8594;</span></a></div></section></div><section><div class="flex justify-between items-end mb-3 gap-4"><div><h2 class="text-base font-semibold flex items-center gap-1.5" style="color: var(--el-color-text-primary);"><span class="text-base leading-none">⚡</span>Скилы<span class="ml-1 rounded-[6px] border px-2 py-0.5 text-[10px] font-semibold leading-none tracking-[0.02em]" style="border-color: color-mix(in srgb, var(--el-color-accent) 34%, transparent); background: color-mix(in srgb, var(--el-color-accent) 11%, transparent); color: var(--el-color-accent);">203 скила</span></h2><p class="mt-0.5 text-xs leading-relaxed" style="color: var(--el-color-text-secondary);">Готовые рабочие связки, к которым можно возвращаться по делу.</p></div><a class="text-xs font-medium shrink-0" href="/skills" style="color: var(--el-color-text-tertiary);">Все →</a></div><div class="space-y-2"><a class="block" href="/content/skill-workshop-fal-visuals"><div class="bg-white border border-border rounded-2xl p-4 shadow-card relative overflow-hidden active:bg-cream-dark transition-colors"><div class="flex gap-4 items-start "><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2 mb-2"><span class="text-[10px] font-medium px-2 py-0.5 bg-cream rounded text-charcoal border border-border">СКИЛЛ</span><span class="text-[10px] text-muted">20 мин</span></div><h3 class="font-medium text-sm text-charcoal leading-snug line-clamp-3 sm:line-clamp-2">FAL Visuals</h3><p class="mt-1 text-xs leading-relaxed text-charcoal-light line-clamp-3 sm:line-clamp-2">Скилл для визуалов к постам: сначала текст, потом английский промпт для FAL.ai, стиль cartoon/steampunk и проверка связи картинки с темой.</p></div></div></div></a><a class="block" href="/content/skill-workshop-openclaw-radar"><div class="bg-white border border-border rounded-2xl p-4 shadow-card relative overflow-hidden active:bg-cream-dark transition-colors"><div class="flex gap-4 items-start "><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2 mb-2"><span class="text-[10px] font-medium px-2 py-0.5 bg-cream rounded text-charcoal border border-border">СКИЛЛ</span><span class="text-[10px] text-muted">20 мин</span></div><h3 class="font-medium text-sm text-charcoal leading-snug line-clamp-3 sm:line-clamp-2">OpenClaw Radar</h3><p class="mt-1 text-xs leading-relaxed text-charcoal-light line-clamp-3 sm:line-clamp-2">Скилл для канала про OpenClaw: каждый день искать сильные навыки, разбирать один практический сценарий и готовить пост без AI-шума.</p></div></div></div></a></div></section><section><div class="flex justify-between items-end mb-3 gap-4"><div><h2 class="text-base font-semibold flex items-center gap-1.5" style="color: var(--el-color-text-primary);"><span class="text-base leading-none">🎙️</span>Встречи</h2><p class="mt-0.5 text-xs leading-relaxed" style="color: var(--el-color-text-secondary);">Дополнительные созвоны и интервью вне основного маршрута.</p></div><a class="text-xs font-medium shrink-0" href="/meetings" style="color: var(--el-color-text-tertiary);">Все →</a></div><div class="space-y-2"><a class="block" href="/content/meeting-2026-06-17-ai-trading"><div class="bg-white border border-border rounded-2xl p-4 shadow-card relative overflow-hidden active:bg-cream-dark transition-colors"><div class="flex gap-4 items-start flex-col sm:flex-row"><div class="relative aspect-video w-full shrink-0 overflow-hidden rounded-xl border border-border bg-cream sm:w-40"><img alt="Превью: ИИ как помощь в трейдинге" loading="lazy" width="320" height="180" decoding="async" data-nimg="1" class="h-full w-full object-contain" src="/files/thumbnails/meeting-2026-06-17-ai-trading.jpg?v=20260618-cover&amp;dpl=human20-rf-20260618T174103Z-91cd91d-prod" style="color: transparent;"><span class="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent"></span></div><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2 mb-2"><span class="text-[10px] font-medium px-2 py-0.5 bg-cream rounded text-charcoal border border-border">17.06.2026</span><span class="text-[10px] font-medium px-2 py-0.5 bg-cream rounded text-charcoal border border-border">ВСТРЕЧА</span><span class="text-[10px] text-muted">1 ч 49 м</span></div><h3 class="font-medium text-sm text-charcoal leading-snug line-clamp-3 sm:line-clamp-2">ИИ как помощь в трейдинге</h3><p class="mt-1 text-xs leading-relaxed text-charcoal-light line-clamp-3 sm:line-clamp-2">Встреча Человек 2.0 с Никитой Герасимовым о том, где ИИ реально помогает трейдеру: рыночный контекст, журнал сделок, дисциплина, проверка идей, приватные сигналы и границы автоматизации.</p></div></div></div></a><a class="block" href="/content/meeting-2026-06-12-superpowers-travel"><div class="bg-white border border-border rounded-2xl p-4 shadow-card relative overflow-hidden active:bg-cream-dark transition-colors"><div class="flex gap-4 items-start flex-col sm:flex-row"><div class="relative aspect-video w-full shrink-0 overflow-hidden rounded-xl border border-border bg-cream sm:w-40"><img alt="Превью: От хаоса к агентной системе: Hermes, Superpowers и travel-agent" loading="lazy" width="320" height="180" decoding="async" data-nimg="1" class="h-full w-full object-contain" src="/files/thumbnails/meeting-2026-06-12-superpowers-travel.jpg?dpl=human20-rf-20260618T174103Z-91cd91d-prod" style="color: transparent;"><span class="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent"></span></div><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2 mb-2"><span class="text-[10px] font-medium px-2 py-0.5 bg-cream rounded text-charcoal border border-border">12 июня 2026</span><span class="text-[10px] font-medium px-2 py-0.5 bg-cream rounded text-charcoal border border-border">ВСТРЕЧА</span><span class="text-[10px] text-muted">1 ч 53 м</span></div><h3 class="font-medium text-sm text-charcoal leading-snug line-clamp-3 sm:line-clamp-2">От хаоса к агентной системе: Hermes, Superpowers и travel-agent</h3><p class="mt-1 text-xs leading-relaxed text-charcoal-light line-clamp-3 sm:line-clamp-2">Большой созвон Human20 про перезапуск сообщества внедренцев ИИ: Hermes вместо старого OpenClaw-контура, skills как главный формат передачи опыта, Superpowers и Writing Plans как рабочая дисциплина, Codex/Claude/Cursor к…</p></div></div></div></a><a class="block" href="/content/extra-voice-agent"><div class="bg-white border border-border rounded-2xl p-4 shadow-card relative overflow-hidden active:bg-cream-dark transition-colors"><div class="flex gap-4 items-start flex-col sm:flex-row"><div class="relative aspect-video w-full shrink-0 overflow-hidden rounded-xl border border-border bg-cream sm:w-40"><img alt="Превью: Voice Agent для OpenClaw: как сделать бота, который звонит сам" loading="lazy" width="320" height="180" decoding="async" data-nimg="1" class="h-full w-full object-contain" src="/files/thumbnails/extra-voice-agent.jpg?v=20260318-2354&amp;dpl=human20-rf-20260618T174103Z-91cd91d-prod" style="color: transparent;"><span class="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent"></span></div><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2 mb-2"><span class="text-[10px] font-medium px-2 py-0.5 bg-cream rounded text-charcoal border border-border">18 марта 2026</span><span class="text-[10px] font-medium px-2 py-0.5 bg-cream rounded text-charcoal border border-border">ВСТРЕЧА</span><span class="text-[10px] text-muted">1ч 12м</span></div><h3 class="font-medium text-sm text-charcoal leading-snug line-clamp-3 sm:line-clamp-2">Voice Agent для OpenClaw: как сделать бота, который звонит сам</h3><p class="mt-1 text-xs leading-relaxed text-charcoal-light line-clamp-3 sm:line-clamp-2">Встреча про voice agent для OpenClaw: как собрать бота, который сам звонит, ведёт разговор и возвращает результат без ручного участия.</p></div></div></div></a></div></section></div><div class="space-y-4"><div class="hidden lg:block"><section><div class="flex justify-between items-end mb-3 gap-4"><div><h2 class="text-base font-semibold flex items-center gap-1.5" style="color: var(--el-color-text-primary);"><span class="text-base leading-none">❓</span>Вопросы</h2><p class="mt-0.5 text-xs leading-relaxed" style="color: var(--el-color-text-secondary);">Короткие ответы на частые вопросы по урокам, скилам, встречам и проектам.</p></div><a class="text-xs font-medium shrink-0" href="/faq" style="color: var(--el-color-text-tertiary);">Все →</a></div><div class="rounded-2xl border border-border shadow-card overflow-hidden space-y-0" style="background: var(--el-color-bg-surface);"><div class="p-4 space-y-2"><details class="rounded-2xl border border-border bg-cream/80 p-4"><summary class="cursor-pointer list-none text-sm font-medium text-charcoal">Будут ли записи уроков и встреч, если я не попал в онлайн?</summary><div class="mt-3 text-sm leading-relaxed text-charcoal-light">Воркшоп не завязан на том, что ты обязан сидеть на каждом созвоне в онлайне. Нормальный сценарий такой: посмотреть встречу вживую, если успеваешь, а если нет — вернуться к записи и пройти материал в своём темпе. Для практики запись даже удобнее: можно поставить на паузу, пересмотреть сложный момент и сразу повторить руками. Поэтому здесь важнее не паниковать из-за пропущенного слота, а быстро понять, где лежит нужная встреча и какой следующий шаг после неё.</div><div class="mt-3 flex flex-wrap items-center gap-2"><span class="rounded-full border border-border bg-white px-3 py-1 text-[11px] text-charcoal-light">Уроки</span><span class="rounded-full border border-border bg-white px-3 py-1 text-[11px] text-charcoal-light">meetings</span><a class="inline-flex items-center gap-1 rounded-full border border-border bg-white px-3 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted transition-colors hover:bg-cream" target="_blank" rel="noreferrer" href="https://t.me/c/3598068116/810">Открыть в чате</a><a class="inline-flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted" href="/content/lesson-onboarding">Открыть материал<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true" class="text-current"><path d="M181.66,133l-80,80a8,8,0,0,1-11.32-11.31L164.69,128,90.34,53.66A8,8,0,0,1,101.66,42.34l80,80A8,8,0,0,1,181.66,133Z"></path></svg></a></div></details><details class="rounded-2xl border border-border bg-cream/80 p-4"><summary class="cursor-pointer list-none text-sm font-medium text-charcoal">Что сейчас использовать: Claude, GPT, Kimi или Minimax?</summary><div class="mt-3 text-sm leading-relaxed text-charcoal-light">Если Minimax у тебя уже куплен под Cursor, это ещё не значит, что его надо тащить во все остальные сценарии. В воркшопе логика простая: сначала разделяешь роли. Один контур может быть удобен для кодинга, другой — для ресёрча или Telegram-задач. Поэтому вопрос не в том, нужна ли «ещё одна подписка вообще», а в том, какую работу должен делать OpenClaw и где текущая модель реально начинает сыпаться по качеству, лимитам или цене. Сначала зафиксируй один рабочий сценарий, потом уже решай, нужен ли второй провайдер имен…</div><div class="mt-3 flex flex-wrap items-center gap-2"><span class="rounded-full border border-border bg-white px-3 py-1 text-[11px] text-charcoal-light">Уроки</span><span class="rounded-full border border-border bg-white px-3 py-1 text-[11px] text-charcoal-light">Модели</span><a class="inline-flex items-center gap-1 rounded-full border border-border bg-white px-3 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted transition-colors hover:bg-cream" target="_blank" rel="noreferrer" href="https://t.me/c/3598068116/677">Открыть в чате</a><a class="inline-flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted" href="/content/lesson-3">Открыть материал<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true" class="text-current"><path d="M181.66,133l-80,80a8,8,0,0,1-11.32-11.31L164.69,128,90.34,53.66A8,8,0,0,1,101.66,42.34l80,80A8,8,0,0,1,181.66,133Z"></path></svg></a></div></details><details class="rounded-2xl border border-border bg-cream/80 p-4"><summary class="cursor-pointer list-none text-sm font-medium text-charcoal">Как сейчас реально оплачивать Cursor, Claude, Perplexity и VPS?</summary><div class="mt-3 text-sm leading-relaxed text-charcoal-light">С оплатами лучше сразу смотреть на весь маршрут, а не только на сам сервис. Обычно ломается одна из четырёх вещей: карта, KYC, гео или антифрод провайдера. Поэтому практический порядок такой: сначала находишь рабочий платёжный контур, которым у тебя реально проходят Cursor, Claude, Perplexity или VPS, и только потом строишь вокруг него постоянный сетап. Если какая-то карта уже стопорится на одном сервисе, это не значит, что сломан весь воркшоп. Значит, надо сменить маршрут оплаты, а не бесконечно биться в ту же то…</div><div class="mt-3 flex flex-wrap items-center gap-2"><span class="rounded-full border border-border bg-white px-3 py-1 text-[11px] text-charcoal-light">Уроки</span><span class="rounded-full border border-border bg-white px-3 py-1 text-[11px] text-charcoal-light">Оплаты</span><a class="inline-flex items-center gap-1 rounded-full border border-border bg-white px-3 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted transition-colors hover:bg-cream" target="_blank" rel="noreferrer" href="https://t.me/c/3598068116/2123">Открыть в чате</a><a class="inline-flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted" href="/content/lesson-onboarding">Открыть материал<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true" class="text-current"><path d="M181.66,133l-80,80a8,8,0,0,1-11.32-11.31L164.69,128,90.34,53.66A8,8,0,0,1,101.66,42.34l80,80A8,8,0,0,1,181.66,133Z"></path></svg></a></div></details></div></div></section></div><div class="hidden lg:block"><div class="text-[10px] uppercase tracking-[0.18em] mb-2" style="color: var(--el-color-text-tertiary);">Быстрый доступ</div><div class="grid grid-cols-3 gap-2"><a class="flex flex-col items-center gap-1.5 rounded-2xl border border-border p-2.5 transition-colors active:opacity-70" href="/skills" style="background: var(--el-color-bg-surface);"><span class="text-2xl leading-none">⚡</span><span class="text-[11px] font-semibold text-center leading-tight" style="color: var(--el-color-text-primary);">Скилы</span><span class="text-[10px] px-1.5 py-0.5 rounded-full font-medium" style="background: rgba(245, 158, 11, 0.1); color: rgb(245, 158, 11);">Связки</span></a><a class="flex flex-col items-center gap-1.5 rounded-2xl border border-border p-2.5 transition-colors active:opacity-70" href="/meetings" style="background: var(--el-color-bg-surface);"><span class="text-2xl leading-none">🎙️</span><span class="text-[11px] font-semibold text-center leading-tight" style="color: var(--el-color-text-primary);">Встречи</span><span class="text-[10px] px-1.5 py-0.5 rounded-full font-medium" style="background: rgba(16, 185, 129, 0.1); color: rgb(16, 185, 129);">Разборы</span></a><a class="flex flex-col items-center gap-1.5 rounded-2xl border border-border p-2.5 transition-colors active:opacity-70" href="/community" style="background: var(--el-color-bg-surface);"><span class="text-2xl leading-none">💬</span><span class="text-[11px] font-semibold text-center leading-tight" style="color: var(--el-color-text-primary);">Чат</span><span class="text-[10px] px-1.5 py-0.5 rounded-full font-medium" style="background: rgba(99, 102, 241, 0.1); color: rgb(99, 102, 241);">Живой</span></a></div></div><section><div class="mb-3"><div class="flex justify-between items-start gap-4"><h2 class="text-base font-semibold flex items-center gap-1.5" style="color: var(--el-color-text-primary);"><span class="text-base leading-none">📡</span>Пульс</h2><span class="shrink-0 text-[11px]" style="color: var(--el-color-text-tertiary);">19 июня в 03:04 UTC+5</span></div><p class="mt-0.5 text-xs leading-relaxed" style="color: var(--el-color-text-secondary);">Бот собирает главное из живого чата «Человек 2.0» — короткие саммари обсуждений, чтобы быстро быть в курсе.</p></div><div class="rounded-2xl border border-border shadow-card overflow-hidden" style="background: var(--el-color-bg-surface);"><div><div class="px-4 py-3"><div class="mb-2 text-[10px] uppercase tracking-[0.16em]" style="color: var(--el-color-text-tertiary);">19 июня в 03:04 UTC+5</div><div class="text-xs leading-relaxed" style="color: var(--el-color-text-secondary);">1. Опенсорс видеогенератор с озвучкой и липсинком (LoRA). 👥 CGP, Evgeny Chip</div><div class="mt-2"><a class="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1 text-[11px] font-medium uppercase tracking-[0.1em] transition-colors" target="_blank" rel="noreferrer" href="https://t.me/c/3598068116/14365" style="color: var(--el-color-text-secondary);">Открыть саммари</a></div></div><div class="px-4 py-3"><div class="mb-2 text-[10px] uppercase tracking-[0.16em]" style="color: var(--el-color-text-tertiary);">18 июня в 23:04 UTC+5</div><div class="text-xs leading-relaxed" style="color: var(--el-color-text-secondary);">1. Выбор VPS для VPN в РФ. 👥 Никита Герасимов, Evgeny Chip</div><div class="mt-2"><a class="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1 text-[11px] font-medium uppercase tracking-[0.1em] transition-colors" target="_blank" rel="noreferrer" href="https://t.me/c/3598068116/14357" style="color: var(--el-color-text-secondary);">Открыть саммари</a></div></div></div><div class="px-4 pb-4"><a class="inline-flex w-full items-center justify-center gap-1 rounded-full px-4 py-2 text-xs font-medium transition-colors" href="/pulse" style="background: var(--el-color-accent); color: rgb(255, 255, 255); -webkit-text-fill-color: rgb(255, 255, 255);">Открыть<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true" class="text-current"><path d="M181.66,133l-80,80a8,8,0,0,1-11.32-11.31L164.69,128,90.34,53.66A8,8,0,0,1,101.66,42.34l80,80A8,8,0,0,1,181.66,133Z"></path></svg></a></div></div></section><section class="rounded-[6px] border border-border bg-[var(--el-color-bg-surface)] p-4 shadow-card h20-social "><div class="text-[10px] font-semibold uppercase tracking-[0.2em]" style="color: var(--el-color-accent);">Площадки</div><h2 class="mt-1 text-base font-semibold leading-tight" style="color: var(--el-color-text-primary);">Подписаться</h2><p class="mt-2 text-xs leading-5" style="color: var(--el-color-text-secondary);">Telegram и ВКонтакте — основные каналы. Все площадки Человек 2.0 — на отдельной странице.</p><div class="h20banner" style="--blue:#6366f1"><div class="actions" style="margin-top:14px;flex-wrap:nowrap;gap:8px"><a class="btn btn-primary" style="flex:1;min-width:0" href="https://t.me/human20">
+        <svg class="btn-ico" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M477,43.86,13.32,223.29a5.86,5.86,0,0,0-.8.38c-3.76,2.13-30,18.18,7,32.57l.38.14,110.41,35.67a6.08,6.08,0,0,0,5.09-.62L409.25,120.57a6,6,0,0,1,2.2-.83c3.81-.63,14.78-1.81,7.84,7-7.85,10-194.9,177.62-215.66,196.21a6.3,6.3,0,0,0-2.07,4.17l-9.06,108a7.08,7.08,0,0,0,2.83,5.67,6.88,6.88,0,0,0,8.17-.62l65.6-58.63a6.09,6.09,0,0,1,7.63-.39l114.45,83.1.37.25c2.77,1.71,32.69,19.12,41.33-19.76l79-375.65c.11-1.19,1.18-14.27-8.17-22-9.82-8.08-23.72-4-25.81-3.56A6,6,0,0,0,477,43.86Z"/></svg>
+        Телеграм
+      </a><a class="btn btn-outline" style="flex:1;min-width:0" href="https://vk.com/human20">
+        <svg class="btn-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m19.915 13.028c-.388-.49-.277-.708 0-1.146.005-.005 3.208-4.431 3.538-5.932l.002-.001c.164-.547 0-.949-.793-.949h-2.624c-.668 0-.976.345-1.141.731 0 0-1.336 3.198-3.226 5.271-.61.599-.892.791-1.225.791-.164 0-.419-.192-.419-.739v-5.105c0-.656-.187-.949-.74-.949h-4.126c-.419 0-.668.306-.668.591 0 .622.945.765 1.043 2.515v3.797c0 .832-.151.985-.486.985-.892 0-3.057-3.211-4.34-6.886-.259-.713-.512-1.001-1.185-1.001h-2.625c-.749 0-.9.345-.9.731 0 .682.892 4.073 4.148 8.553 2.17 3.058 5.226 4.715 8.006 4.715 1.671 0 1.875-.368 1.875-1.001 0-2.922-.151-3.198.686-3.198.388 0 1.056.192 2.616 1.667 1.783 1.749 2.076 2.532 3.074 2.532h2.624c.748 0 1.127-.368.909-1.094-.499-1.527-3.871-4.668-4.023-4.878z"/></svg>
+        ВКонтакте
+      </a></div><a href="/socials/" style="display:inline-flex;align-items:center;gap:5px;margin-top:12px;color:#6366f1;font-weight:800;font-size:14px;text-decoration:none">Все соцсети <span aria-hidden="true">&#8594;</span></a></div></section></div></div><div><div class="flex items-center justify-between mb-2"><span class="text-sm font-semibold text-charcoal">🤖 Агент учится за тебя</span><a class="text-xs text-muted hover:text-charcoal transition-colors" href="/agent">Подключить →</a></div><a class="block rounded-[6px] bg-white border border-border shadow-card p-5 active:bg-[var(--el-color-bg-surface-muted)] transition-colors" href="/agent"><div class="flex items-start justify-between gap-3 mb-3"><p class="text-sm font-medium text-charcoal">API и MCP-сервер</p><span class="text-[10px] font-semibold px-2 py-0.5 rounded-[6px] border shrink-0 bg-green-50 text-green-700 border-green-200">Подключён</span></div><p class="text-xs text-charcoal-light leading-relaxed">Токен уже создан. Добавь его в MCP-клиент или агента, и доступ будет работать напрямую.</p></a></div></div><footer class="px-4 pb-28 pt-10 lg:px-0 lg:pb-10"><div class="border-t border-border pt-5 text-xs leading-6 text-muted"><div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"><div><div class="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">Разделы</div><div class="flex flex-col items-start gap-1.5"><a class="transition-colors hover:text-charcoal" href="/lessons">Уроки</a><a class="transition-colors hover:text-charcoal" href="/skills">Скилы</a><a class="transition-colors hover:text-charcoal" href="/meetings">Встречи</a><a class="transition-colors hover:text-charcoal" href="/projects">Проекты</a><a class="transition-colors hover:text-charcoal" href="/pulse">Пульс</a><a class="transition-colors hover:text-charcoal" href="/articles">Статьи</a><a class="transition-colors hover:text-charcoal" href="/faq">Вопросы</a><a class="transition-colors hover:text-charcoal" href="/community">ТГ Канал + Чат</a><a class="transition-colors hover:text-charcoal" href="/agent">API / MCP</a></div></div><div><div class="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">Продукты</div><div class="flex flex-col items-start gap-1.5"><a class="transition-colors hover:text-charcoal" href="/prices">Наши продукты и цены</a><a class="transition-colors hover:text-charcoal" href="/legal/offer">Оферта</a><a class="transition-colors hover:text-charcoal" href="/legal/ready-agent-offer">Условия услуги «Готовый агент»</a></div></div><div><div class="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">Документы</div><div class="flex flex-col items-start gap-1.5"><a class="transition-colors hover:text-charcoal" href="/privacy">Политика конфиденциальности</a><a class="transition-colors hover:text-charcoal" href="/rules">Правила Человек 2.0</a><a class="transition-colors hover:text-charcoal" href="/legal/personal-data-consent">Согласие на ПД</a><a class="transition-colors hover:text-charcoal" href="/legal/ads-consent">Рассылка</a><a class="transition-colors hover:text-charcoal" href="/legal/cookies-consent">Cookies</a><a class="transition-colors hover:text-charcoal" href="/legal">Все документы</a></div></div><div><div class="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">Контакты</div><div class="space-y-1.5"><div>ИП Юрченко Е.И.</div><div>ИНН 782508128540</div><a class="block transition-colors hover:text-charcoal" href="mailto:human20app@yandex.ru">human20app@yandex.ru</a><div class="pt-2 text-[11px] uppercase tracking-[0.16em] text-muted">Cookies и реклама — только по отдельному согласию</div></div></div></div><div class="mt-6 text-[11px] text-muted">Человек 2.0: Среда внедрения ИИ • © 2026 Евгений “Chip” Юрченко</div></div></footer></main></div></div></div><div class="h20-crosshair-outline" aria-hidden="true" style="width: 32px; height: 32px; transform: translate(calc(-50% + 600px), calc(-50% + 397.5px)) rotate(2182.5deg);"><div class="h20-crosshair-corner h20-crosshair-corner--tl" aria-hidden="true"></div><div class="h20-crosshair-corner h20-crosshair-corner--tr" aria-hidden="true"></div><div class="h20-crosshair-corner h20-crosshair-corner--br" aria-hidden="true"></div><div class="h20-crosshair-corner h20-crosshair-corner--bl" aria-hidden="true"></div></div><div class="h20-crosshair-dot" aria-hidden="true"></div><next-route-announcer style="position: absolute;"></next-route-announcer><link rel="preload" as="image" href="/avatar/current?telegram_user_id=5066525175"><!--hermes-popup-->
+<style>
+.hms-root{font-family:Onest,"Onest Fallback",system-ui,sans-serif}
+.hms-pop{position:fixed;right:20px;bottom:20px;z-index:9999;width:340px;max-width:calc(100vw - 32px);background:#fff;border:1px solid #e6e8ee;border-radius:18px;
+  box-shadow:0 12px 40px rgba(16,24,40,.16),0 2px 8px rgba(16,24,40,.06);overflow:hidden;transform-origin:bottom right;
+  animation:hmsIn .45s cubic-bezier(.22,1,.36,1) 1.2s backwards;
+  transition:opacity .24s ease,transform .36s cubic-bezier(.22,1,.36,1),visibility .24s}
+/* свёрнуто: прячем панель трансформом (НЕ display:none) — реоткрытие = мгновенный анимированный разворот,
+   а вступление с «печатает…» проигрывается только при первой загрузке (анимация не сбрасывается) */
+.hms-dismiss:checked ~ .hms-pop{opacity:0;transform:translateY(10px) scale(.85);visibility:hidden;pointer-events:none}
+.hms-head{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #f0f1f5}
+.hms-ava{position:relative;flex:none;width:42px;height:42px;border-radius:11px;background:#0a0e1a}
+.hms-ava img{width:100%;height:100%;object-fit:contain;display:block;border-radius:11px}
+.hms-dot{position:absolute;right:-1px;bottom:-1px;z-index:3;width:11px;height:11px;border-radius:50%;background:#22c55e;border:2px solid #fff}
+.hms-id{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.hms-id b{font-size:14px;font-weight:700;color:#111827}
+.hms-id small{font-size:11px;color:#8b90a0}
+.hms-x{margin-left:auto;flex:none;width:26px;height:26px;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;color:#9aa0ae;font-size:20px;line-height:1;cursor:pointer;transition:background .15s,color .15s}
+.hms-x:hover{background:#f3f4f6;color:#4b5563}
+.hms-body{padding:12px 14px 14px}
+.hms-typing{display:inline-flex;gap:5px;align-items:center;padding:11px 14px;background:#f3f4f6;border-radius:14px;border-bottom-left-radius:5px;
+  animation:hmsTypeOut .28s ease 2.3s forwards}
+.hms-typing span{width:7px;height:7px;border-radius:50%;background:#c3c8d4;animation:hmsBounce 1.1s infinite}
+.hms-typing span:nth-child(2){animation-delay:.15s}.hms-typing span:nth-child(3){animation-delay:.3s}
+.hms-msg{opacity:0;transform:translateY(6px);animation:hmsMsgIn .4s cubic-bezier(.22,1,.36,1) 2.5s forwards}
+.hms-bubble{background:#f5f6f8;border-radius:10px;border-bottom-left-radius:4px;padding:12px 14px;color:#1f2430;font-size:14px;line-height:1.5}
+.hms-bubble p{margin:0 0 8px}.hms-bubble p:last-of-type{margin-bottom:0}
+.hms-t1{font-weight:700;font-size:14.5px;color:#111827}
+.hms-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}
+.hms-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 8px;border-radius:8px;
+  font-size:13px;font-weight:600;text-decoration:none;border:1px solid #e6e8ee;background:#fff;color:#1f2937;transition:transform .12s,box-shadow .15s,background .15s}
+.hms-btn:hover{transform:translateY(-1px)}
+.hms-btn--p{background:#6366f1;border-color:#6366f1;color:#fff;box-shadow:0 6px 16px rgba(99,102,241,.28)}
+.hms-btn--p:hover{background:#5457e5}
+.hms-reopen{display:none;align-items:center;gap:11px;padding:8px 16px 8px 8px;border-radius:16px;cursor:pointer;
+  position:fixed;right:20px;bottom:20px;z-index:9999;background:#fff;border:1px solid #e6e8ee;box-shadow:0 10px 28px rgba(16,24,40,.16);
+  transition:transform .12s,box-shadow .15s}
+.hms-reopen:hover{transform:translateY(-1px);box-shadow:0 14px 34px rgba(16,24,40,.22)}
+.hms-reopen .hms-id{align-items:flex-start;text-align:left}
+.hms-dismiss:checked ~ .hms-reopen{display:inline-flex;animation:hmsPill .34s cubic-bezier(.22,1,.36,1)}
+@keyframes hmsIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes hmsPill{from{opacity:0;transform:translateY(10px) scale(.9)}to{opacity:1;transform:none}}
+@keyframes hmsMsgIn{to{opacity:1;transform:none}}
+@keyframes hmsTypeOut{to{opacity:0;max-height:0;padding-top:0;padding-bottom:0;margin:0;overflow:hidden}}
+@keyframes hmsBounce{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+/* мобилка: нижний нав-бар сайта — поднимаем поповер/плашку над ним */
+@media(max-width:1023px){.hms-pop,.hms-reopen{right:14px;bottom:calc(86px + env(safe-area-inset-bottom,0px))}}
+/* телефон ≤560px: bottom-sheet на всю ширину над навбаром */
+@media(max-width:560px){
+ .hms-pop{left:12px;right:12px;bottom:calc(64px + env(safe-area-inset-bottom,0px));width:auto;max-width:none;border-radius:18px 18px 14px 14px}
+ .hms-reopen{left:auto;right:12px;bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+}
+@media(prefers-reduced-motion:reduce){.hms-pop,.hms-msg{animation-delay:.2s}.hms-typing{display:none}}
+</style>
+<div class="hms-root">
+<input type="checkbox" id="hmsDismiss" class="hms-dismiss" hidden>
+<section class="hms-pop" role="dialog" aria-label="Сообщение от Hermes">
+<header class="hms-head">
+<span class="hms-ava"><img src="/assets/hermes.jpg" alt=""><i class="hms-dot"></i></span>
+<span class="hms-id"><b>Hermes</b><small>ИИ-агент · Человек 2.0</small></span>
+<label for="hmsDismiss" class="hms-x" role="button" aria-label="Закрыть">&times;</label>
+</header>
+<div class="hms-body">
+<div class="hms-typing"><span></span><span></span><span></span></div>
+<div class="hms-msg">
+<div class="hms-bubble">
+<p class="hms-t1">⚡ Хотите собрать своего агента?</p>
+<p>Воркшоп «Человек 2.0» — самый короткий маршрут: от Codex и сервера до личного агента в Telegram. Без кода, без хаоса и без попыток собрать всё вслепую.</p>
+</div>
+<div class="hms-actions">
+<a class="hms-btn hms-btn--p" href="/launch/workshop/">🚀 Открыть воркшоп</a>
+<a class="hms-btn" href="https://t.me/m/WCyJ1tWzOWE6" target="_blank" rel="noreferrer">💬 Задать вопрос</a>
+</div>
+</div>
+</div>
+</section>
+<label for="hmsDismiss" class="hms-reopen" role="button" aria-label="Открыть сообщение Hermes">
+<span class="hms-ava"><img src="/assets/hermes.jpg" alt=""><i class="hms-dot"></i></span>
+<span class="hms-id"><b>Hermes</b><small>ИИ-агент · Человек 2.0</small></span>
+</label>
+</div>
+<!--/hermes-popup-->
+</body></html>
