@@ -346,6 +346,8 @@ html{display:block!important;visibility:visible!important;opacity:1!important}ht
         else{c.classList.add('m-o8');}
       });
       if(rail){
+        var chat=Array.prototype.find.call(rail.children,function(c){return /живое место|Не пропусти/i.test(c.textContent||'');});
+        if(chat){chat.classList.add('m-hide');}
         var social=Array.prototype.find.call(rail.children,function(c){return /Подписаться/.test(c.textContent||'');});
         if(social&&social.parentElement!==col){social.classList.add('m-social','m-o9');col.appendChild(social);}
       }
