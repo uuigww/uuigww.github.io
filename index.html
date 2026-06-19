@@ -320,7 +320,7 @@ html{display:block!important;visibility:visible!important;opacity:1!important}ht
   .m-reordered{display:flex!important;flex-direction:column}
   .m-reordered>.m-rail{display:flex;flex-direction:column}
   .m-hide{display:none!important}
-  .m-o1{order:1}.m-o2{order:2}.m-o5{order:5}.m-o6{order:6}.m-o7{order:7}.m-o8{order:8}.m-o9{order:9}
+  .m-o1{order:1}.m-o2{order:2}.m-o3{order:3}.m-o5{order:5}.m-o6{order:6}.m-o7{order:7}.m-o8{order:8}.m-o9{order:9}
 }
 @media (min-width:1024px){.m-social{display:none!important}}
 </style>
@@ -340,16 +340,17 @@ html{display:block!important;visibility:visible!important;opacity:1!important}ht
         if(cl.indexOf('h20banner')>=0){c.classList.add('m-o1');}
         else if(cl.indexOf('lg:hidden')>=0&&cl.indexOf('space-y-3')>=0){c.classList.add('m-o2','m-rail');rail=c;}
         else if(/Уроки открываются|Воркшоп 2\.0/.test(t)){c.classList.add('m-hide');}
+        else if(/Сначала запись/.test(t)){c.classList.add('m-o3');}
         else if(/Скил/.test(t)){c.classList.add('m-o5');}
         else if(/Встреч/.test(t)){c.classList.add('m-o6');}
-        else if(/Пульс/.test(t)){c.classList.add('m-o7');}
+        else if(cl.indexOf('lg:hidden')>=0&&/Вопрос/.test(t)){c.classList.add('m-o7');}
         else{c.classList.add('m-o8');}
       });
       if(rail){
         var chat=Array.prototype.find.call(rail.children,function(c){return /живое место|Не пропусти/i.test(c.textContent||'');});
         if(chat){chat.classList.add('m-hide');}
         var social=Array.prototype.find.call(rail.children,function(c){return /Подписаться/.test(c.textContent||'');});
-        if(social&&social.parentElement!==col){social.classList.add('m-social','m-o9');col.appendChild(social);}
+        if(social){social.classList.add('m-hide');}
       }
     }catch(e){}
   }
